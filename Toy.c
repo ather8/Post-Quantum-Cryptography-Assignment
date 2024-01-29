@@ -2,21 +2,14 @@
 
 static void toy_fill_small(short* buf, int n)
 {
-    if (1)
-    {
         for (int i = 0; i < n; ++i)
         {
             short val = rand() & 0xF;
-            val = (val << 1 & 1) - (val - 1);
+            val = (val >> 1 & 1) - (val & 1);
             if (val < 0)
                 val += TK_Q;
             buf[i] = val;
         }
-    }
-    else
-    {
-        memset(buf, 0, n * sizeof(short));
-    }
 }
 
 static void toy_polmul_naive(short* dst, const short* a, const short* b, int add)
